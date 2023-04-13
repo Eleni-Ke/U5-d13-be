@@ -7,7 +7,7 @@ import { createServer } from "http";
 import { newConnectionHandler } from "./socket/index.js";
 
 const expressServer = express();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3002;
 
 // SOCKET.IO
 const httpServer = createServer(expressServer);
@@ -18,7 +18,7 @@ socketioServer.on("connection", newConnectionHandler);
 //ERROR HANDLER
 mongoose.connect(process.env.MONGO_URL);
 
-mongoose.connection.on("connect", () => {
+mongoose.connection.on("connected", () => {
   httpServer.listen(port, () => {
     console.table(listEndpoints(expressServer));
     console.log(`Server listening on port ${port}`);
