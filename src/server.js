@@ -7,7 +7,7 @@ import { createServer } from "http";
 import { newConnectionHandler } from "./socket/index.js";
 
 const expressServer = express();
-const port = process.env.PORT || 3002;
+const port = process.env.PORT || 3001;
 
 // SOCKET.IO
 const httpServer = createServer(expressServer);
